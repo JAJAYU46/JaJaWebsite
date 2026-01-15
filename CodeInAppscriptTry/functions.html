@@ -1,0 +1,112 @@
+<script>
+function CreatBlock(blockname, blockintro, blockimg){
+    //let divBlock= document.createElement('div');
+    //document.appendChild(document.createElement('div'));
+    const S3block_div=document.createElement("div");
+    
+    const S4_artical=document.createElement("article");
+    const S5_h3=document.createElement("h3");
+    const S5_p=document.createElement("p");
+
+    const S4_div=document.createElement("div");
+    const S5_img=document.createElement("img");
+
+    /* 堆成層 */
+    document.getElementById('S2div_temblock1').append(S3block_div);
+    S3block_div.appendChild(S4_artical);
+    S3block_div.appendChild(S4_div);
+    
+    S4_artical.appendChild(S5_h3);
+    S4_artical.appendChild(S5_p);
+    S4_artical.style.whiteSpace="pre-line";
+    S5_p.style.display="-webkit-box";
+    S5_p.style.WebkitBoxOrient="vertical";
+    S5_p.style.WebkitLineClamp="10";
+
+    S5_p.style.whiteSpace="nowrap";    
+    // S5_p.style.textOverflow="clip";
+    S5_p.style.overflow="auto";
+    
+    //S5_p.style.overflow="visible";
+
+    /*display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;*/
+
+
+    S5_p.style.whiteSpace="pre-line";
+
+    S4_div.appendChild(S5_img);
+
+    /*Set Attribute & text*/
+    S3block_div.setAttribute('class','S3div_block thumbnail');
+    // S3block_div.setAttribute('onclick','Alert_t(3)')
+    S5_p.setAttribute('class','S5_p');
+    S5_h3.textContent=blockname;
+    S5_p.textContent=blockintro;
+
+    S4_div.setAttribute('class', 'projectImg');
+    S5_img.setAttribute('src',blockimg);
+    S5_img.setAttribute('alt','car Image');
+    //document.getElementById('S2div_temblock1').append(document.createElement('div'));
+    //console.log(divBlock);
+      var cols = document.getElementsByClassName('S3div_block');
+      var cols2 = document.getElementsByClassName('projectImg');
+  for(i = 0; i < cols.length; i++) {
+    cols[i].style.zIndex = '0';
+    // cols2[i].style.max-width:100%;
+
+    //S5_p.style.whiteSpace="pre-line";
+    // cols2[i].style.maxWidth =100%;
+    // cols2[i].style.borderBottomLeftRadius = '15%';
+    // cols2[i].style.position = 'relative';
+    // cols2[i].style.bottom = '10px';
+    // document.getElementsByClassName('projectImg')
+  }
+
+  /*max-width: 100%; 
+    border-bottom-left-radius: 15%;
+    position: relative;
+    bottom: 10px;*/
+  // for(j = 0; j < cols2.length; j++) {
+  //    cols2[j].style.width = '100%';
+  //    cols2[j].style.borderBottomLeftRadius = '3%';
+  //    //cols2[j].style.position = 'absolute';
+  //    //cols2[j].style.bottom = '5px';
+  //   //cols2[i].style.whiteSpace="pre-line";
+  //   //S5_p.style.whiteSpace="pre-line";
+  // }
+    
+}
+
+function Alert_t(text){
+        Swal.fire({
+        title: 'Welcome to my Website!',
+        text: "Loading Data from Cloud...",
+        // iconHtml: '<img src="https://drive.google.com/thumbnail?id=1l5YR8DL-TBYmzI5-zziJAdakirWmpW6l">',
+        imageUrl: 'https://drive.google.com/thumbnail?id=1l5YR8DL-TBYmzI5-zziJAdakirWmpW6l',
+        // imageWidth: 200,
+        imageHeight: 150,
+        imageAlt: 'Custom image',
+        
+        // customClass: {
+        //   icon: 'no-border'
+        // }
+      })
+      S5_p.style.transform="scale(2)";('S3div_block').style.zIndex=555566;
+}
+
+function AddData(projectName, projDisc, projectImg, chooseTime){
+  alert (projectName+" "+projectImg+" "+ chooseTime+" "+ projDisc);
+
+
+}
+
+
+
+
+
+</script>
