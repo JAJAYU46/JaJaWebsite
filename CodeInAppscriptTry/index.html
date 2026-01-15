@@ -1,0 +1,234 @@
+<!-- 說明: 連結到googlesheet 收資料from sheet之前 -->
+<!DOCTYPE html>            <!-- 告訴"這個file是HTML的Fi" --> 
+<html>
+	<head> 
+    <?!= include('styles') ?>
+    <?!= include('functions') ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href='https://fonts.googleapis.com/css?family=Oleo Script' rel='stylesheet'>
+        <link rel="stylesheet" href="/styles.css">
+        <script type = "text/javascript" src="functions.js"></script> <!--把javascript function file的link進來 -->
+        <title> JaJa's Website </title>  
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> -->
+
+
+
+    <script type="text/javascript">
+
+//    swal({
+//   title: 'Are you sure?',
+//   text: "You won't be able to revert this!",
+//   type: 'warning',
+//   showConfirmButton:false,
+//   confirmButtonText: 'Yes, delete it!'
+// })
+      window.onload = function(){//window.addEventListener('load',function(){...}); (for Netscape) and window.attachEvent('onload',function(){...}); (for IE and Opera) also work
+        // alert("loading data from cloud...");
+      // swal({
+      //   title: "Welcome to my Website!",
+      //   icon: "info",
+      //   buttons: true,
+      //   text: "Loading Data from Cloud...",
+      //   dangerMode: false
+      // });
+      Swal.fire({
+                title: 'Custom icon!',
+                text: 'Alert with a custom image.',
+                imageUrl: 'https://image.shutterstock.com/z/stock-vector--exclamation-mark-exclamation-mark-hazard-warning-symbol-flat-design-style-vector-eps-444778462.jpg',
+                imageWidth: 50,
+                imageHeight: 50,
+                imageAlt: 'Custom image',
+                animation: false
+            })
+
+      Swal.fire({
+        title: 'Welcome to my Website!',
+        text: "Loading Data from Cloud...",
+        // iconHtml: '<img src="https://drive.google.com/thumbnail?id=1l5YR8DL-TBYmzI5-zziJAdakirWmpW6l">',
+        imageUrl: 'https://drive.google.com/thumbnail?id=1l5YR8DL-TBYmzI5-zziJAdakirWmpW6l',
+        // imageWidth: 200,
+        imageHeight: 150,
+        imageAlt: 'Custom image',
+        
+        // customClass: {
+        //   icon: 'no-border'
+        // }
+      })
+
+    }
+    </script>
+	</head>
+	<body>  <!-- 所有顯示在browser內的都會在這裡 -->
+		<!-- <p>Hehehehehe</p> Paragragh tag (寫了會顯示: 在text內容上)... -->
+        
+        <header> 
+            <h1>JaJa's Web Homepage</h1>
+        </header>
+        
+        <section class="S_banner">
+            <img src="https://www.americanoceans.org/wp-content/uploads/2023/06/bottom-of-the-ocean-1536x1024.jpeg" alt="marioclub welcome banner"> 
+            <div class="banner_word">
+              <h2>About me </h2>
+            </div>
+        </section>
+
+        <nav class="S_nav"> 
+            <ul>
+              <!-- <li><a href="/index.html" >HOME(Developing...)</a></li>
+              <li><a href="/myProject.html" class="nowPage">MY PROJECT</a></li> -->
+              <li><a  >HOME(Developing...)</a></li>
+              <li><a  class="nowPage">MY PROJECT</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- 整體圖框標 -->
+            <div class="S1_plane plane1">
+                <h2>College</h2>
+
+                <div class="S2div_temblock" id="S2div_temblock1">
+                    <!--try add element-->
+                    
+                    <script>
+                        google.script.run.withFailureHandler(onFailure).withSuccessHandler(myHandler).getDForCollege();  //Data.length
+                        
+                        function onFailure(error){
+                            alert("Errorrr!"+error.message);
+                        }
+                        function myHandler(subject){
+                          
+                          //alert("Get Data Success!! Data="+subject);
+                          Data = subject;
+                          for(let i = 0; i < Data.length; i++){
+                            //for(let j = 0; j < 3; j++){
+                            //alert(Data[i][2]);
+                            CreatBlock(Data[i][0],Data[i][1],Data[i][2]);
+                            //}
+                          }
+
+                        }
+                      
+                    </script>
+
+                 
+                    
+
+
+                    <section class="Add hoverdashed">
+                        <h3>Add a new project</h3>
+                        <p>Add your project here</p>
+                        <form id="AddForm">
+                            <label for="projectName">Enter project name:</label>
+                            <input type="text" name="project_Name" id="projectName" placeholder="Type project name here" required>
+                            <br>
+
+                            <label for="projectImg">Enter project Image:</label>
+                            <input type="text" name="project_Img" id="projectImg" placeholder="Image URL/drive id" required>
+                            <br>
+            
+                            <label for="chooseTime">Choose the time category: </label>
+                            <select name="choose_Time" id="chooseTime">
+                                <option value="ans_college"> College </option>
+                                <option value="ans_highschool"> High School (Developing...) </option>
+                                <option value="ans_other"> Other (Developing...)</option>
+                            </select>
+                            <br>
+                
+                            <label for="projDisc"> Project Brief Discription: </label><br>
+                            <textarea name="proj_Disc" id="projDisc" cols="30" rows="5" placeholder="Discribe the project here..."></textarea> 
+            
+                            <input type="submit" value="submit">
+                        </form>
+                    </section>
+                </div> 
+
+                <p class="note">------ project from College ------</p>
+            
+            </div>
+            <br> <br>           
+
+        </main>
+
+
+        
+    
+        <footer>
+            <p class="copyright">Contact Info: jajajaja4646@gmail.com<br>Copyright 2024 JaJa YU
+          
+
+            </p>
+
+        </footer>
+
+
+        <script>
+        const AddForm = document.getElementById("AddForm");
+        AddForm.addEventListener("submit", (e) => {e.preventDefault();
+        // Alert_t("Submitted!!");
+        const data = new FormData(e.target);
+
+
+        // AddData(data.get("project_Name"), data.get("proj_Disc"), data.get("project_Img"), data.get("choose_Time"), );
+        // //  AddData(document.getElementById("projectName"), document.getElementById("chooseTime"), document.getElementById("projDisc"));
+        /*上傳Data(連接到Code.gs-->google sheet)*/
+
+        /*讓可傳http .jpg or google drive id*/
+         let PImage=data.get("project_Img");
+        if (!PImage.includes("https")){
+          PImage="https://drive.google.com/thumbnail?id="+PImage;
+        }
+
+        google.script.run.withFailureHandler(onFailure2).withSuccessHandler(myHandler2).AddData(data.get("project_Name"), data.get("proj_Disc"), PImage, data.get("choose_Time"));  //Data.length
+                        
+          function onFailure2(error){
+              alert("Errorrr!"+error.message);
+          }
+          function myHandler2(){
+            
+            // alert("Update Sucsess! Please refresh the page");
+            /*用Sweet Alert做漂亮多了*/
+          Swal.fire({
+            
+            title: 'Update Success!',
+            icon:"success",
+            text: "Please refresh the page",
+            showConfirmButton: false,
+            timer: 2000
+          })
+          }
+
+        });
+
+        
+          // google.script.run.withFailureHandler(onFailure2).withSuccessHandler(myHandler2).getDForCollege();  //Data.length
+          
+          // function onFailure2(error){
+          //     alert("Errorrr!"+error.message);
+          // }
+          // function myHandler2(subject){
+          //   alert("DataUpSucsess!");
+            
+
+          // }
+                        
+        </script>
+
+        <script>
+          var btn = document.getElementsByClassName('thumbnail');
+
+          // 參數 e 就是上面說的事件物件 (Event Object)
+          // 因為是參數，當然也可以自己定義名稱
+          btn.addEventListener('click', function(e){
+            .thumbnail.style.transform=scale(2); 
+          }, false);
+        </script>
+
+	<body>
+
+
+
+</html>
+
+
